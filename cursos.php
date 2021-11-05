@@ -11,9 +11,9 @@
               <th>Semestres</th>
               <th>Coordenador</th>
           </thead>
-          <tbody id="tabela-cursos">
+          <tbody id="tabelaCursos">
               <!-- Aqui vão as linhas com os dados -->
-
+              
           </tbody>
       </table>
   </main>
