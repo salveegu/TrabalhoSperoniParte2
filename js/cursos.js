@@ -11,7 +11,7 @@ function buscaCursos(){
 
    
 
-    let tabelaCursos = document.querySelector(#tabelaCursos);
+    let tabelaCursos = document.querySelector("#tabelaCursos");
 
     fetch('api/dadoscursos.php') //url sendo requisitada
         .then((resposta) => { //pega a resposta no formato json
@@ -20,7 +20,7 @@ function buscaCursos(){
         .then((dados) => {    //aquela resposta contem dados
             dados.forEach(curso => { //para cada curso contido em dados
                 console.log(curso.nome); //exibe o nome do curso no console
-                let textnome = document.createTextNode(curso.nome); //cria um nó de texto
+                let textNome = document.createTextNode(curso.nome); //cria um nó de texto
                 tabelaCursos.appendChild(textNome); //adiciona o nó de texto dentro do elemento #tabelaCursos
             })
         }) 
