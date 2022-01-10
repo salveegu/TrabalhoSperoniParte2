@@ -163,7 +163,40 @@ $disciplinas = array(
     )    
 );
 
-// GET CURSOSOS -------------------------------------------
+// GetDsciplinas--------------------------------
+//função recebe o id do curso e o semestre
+
+//caso seja passado o semestre 0, mostrar disciplinas de todos os semestres
+
+function getDisciplinas($id_curso, $semestre){
+    global $disciplinas;
+    //cria um array para as disciplinas selecionadas
+    $discSelecionadas = array();
+    foreach($disciplinas as $disciplina){
+        //testa se é disciplina do curso
+        if ($disciplina['id_curso'] == $id_curso){
+            //se for o semestre informado, ou se informar zero
+            if (($disciplina['semestre'] == $semestre) ||
+                ($semestre == 0)){
+                    //adiciona esta disciplina ao array das selecionadas
+                    array_push($discSelecionadas, $disciplina);
+                }
+        }
+    }
+    //retorna o array criado, contendo as selecionadas
+    return $discSelecionadas;
+}
+
+
+
+// GetDsciplinas--------------------------------
+
+                       //--------/
+
+
+
+
+// GET CURSOS -------------------------------------------
 
 
 function getCursos(){
@@ -177,7 +210,7 @@ function getCursos(){
     }    
     return $cursos;
 }
-//GET CURSOSOS ------------------------------------------------
+//GET CURSOS ------------------------------------------------
 
                      //------//
 

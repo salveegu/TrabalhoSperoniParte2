@@ -4,6 +4,16 @@ window.onload = function(){
     buscaCursos();
 }
 
+function linkCurso(curso){
+    var id = curso.getAttribute('data-curso');
+    window.location.href = "curso.html?id="+id;
+}
+
+function linkProfessor(coord){
+    var id = coord.getAttribute('data-coord');
+    window.location.href = "professor.php?id="+id;
+}
+
 function buscaCursos(){
     //funcao que busca os dados em api/cursos.php e monta o HTML na página
 
@@ -18,6 +28,10 @@ function buscaCursos(){
             dados.forEach(curso => { //para cada curso contido em dados
                 console.log(curso.nome); //exibe o nome do curso no console
                 
+                
+                
+
+
                  //DOM - Document Object Model
                 let tr = document.createElement("tr");
                 //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
@@ -26,11 +40,30 @@ function buscaCursos(){
                 tdid.appendChild(textid);
                 tr.appendChild(tdid);
 
+
+                //------- criação do link no nome do curso
+
+
                 //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
+
                 let tdnome = document.createElement("td");
+                let linknome = document.createElement("a");
                 let textnome = document.createTextNode(curso.nome);
-                tdnome.appendChild(textnome);
+
+                linknome.appendChild(textnome);
+                linknome.setAttribute("onclick", "linkCurso(this)");
+                linknome.setAttribute("data-curso", curso.id);
+                linknome.setAttribute("href", "#");
+
+                //tdnome.appendChild(textnome);
+
+                tdnome.appendChild(linknome);
                 tr.appendChild(tdnome);
+
+
+                //------- criação do link no nome do curso
+
+
 
                 //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
                 let tdsemestres = document.createElement("td");
@@ -61,9 +94,6 @@ function buscaCursos(){
 
                 //adiciona a linha na tabela
                 tabelaCursos.appendChild(tr);
-
-               
-
 
             })
         
