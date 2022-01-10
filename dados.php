@@ -163,11 +163,61 @@ $disciplinas = array(
     )    
 );
 
-//variavel $cursos foi definida fora da função (Escopo Global)
+// GET CURSOSOS -------------------------------------------
+
+
 function getCursos(){
     global $cursos; //a funcao passa a "conhecer" a variavel definida fora
+    //percorre cada posição do array
+    for($i=0; $i<sizeof($cursos); $i++){
+        //busca o professor correspondente, recebe o Array
+        $coordenador = getProfessor($cursos[$i]['coordenador']);
+        //substitui o valor da posição coordenador pelo Array
+        $cursos[$i]['coordenador'] = $coordenador;
+    }    
     return $cursos;
 }
+//GET CURSOSOS ------------------------------------------------
+
+                     //------//
+
+
+//recebe um id, e retorna um Array com os dados do professor correspondente
+function getCurso($id){
+    //usa a variável $professores (que é global)
+    global $cursos;
+    //percorre o array
+    foreach($cursos as $curso){
+        //testa se o valor contido na posição id é o mesmo passado por parâmetro
+        if($curso['id'] == $id){
+            //se for, retorna o Array $professor (que contem id e nome do professor)
+            return $curso;
+        }
+    }
+
+}
+
+// GET CURSOS POR ID------------------------------------------
+
+function getCursoPorId($id_curso){
+    global $cursos;
+
+    $cursoRetorno = array();
+
+    foreach($cursos as $curso){ //para cada 
+        if($curso['id'] == $id_curso){
+            //substitui o id pelo array do professor retornado
+            $curso['coordenador'] = getProfessor($curso['coordenador']);
+            $cursoRetorno = $curso;
+        }
+    }
+    //retorna o array de curso 
+    return $cursoRetorno;
+}
+
+//GET CURSOS POR ID------------------------------------------
+
+       //--------//
 
 //recebe um id, e retorna um Array com os dados do professor correspondente
 function getProfessor($id){
@@ -183,16 +233,6 @@ function getProfessor($id){
     }
 }
 
-//recebe um id, e retorna um Array com os dados do professor correspondente
-function getCurso($id){
-    //usa a variável $professores (que é global)
-    global $cursos;
-    //percorre o array
-    foreach($cursos as $curso){
-        //testa se o valor contido na posição id é o mesmo passado por parâmetro
-        if($curso['id'] == $id){
-            //se for, retorna o Array $professor (que contem id e nome do professor)
-            return $curso;
-        }
-    }
-}
+
+
+

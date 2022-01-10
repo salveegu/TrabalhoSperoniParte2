@@ -17,12 +17,54 @@ function buscaCursos(){
         .then((dados) => {    //aquela resposta contem dados
             dados.forEach(curso => { //para cada curso contido em dados
                 console.log(curso.nome); //exibe o nome do curso no console
-                let tr = document.createElement("tr"); //cria um tr
-                let tdnome = document.createElement("td"); //cria um td
-                let textnome = document.createTextNode(curso.nome); //cria um nó de texto
-                tdnome.appendChild(textnome); //adiciona o nó de texto dentro do td
-                tr.appendChild(tdnome); //adiciona o td dentro do tr
-                tabelaCursos.appendChild(tr); //adiciona o tr dentro da tabela
+                
+                 //DOM - Document Object Model
+                let tr = document.createElement("tr");
+                //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
+                let tdid = document.createElement("td");
+                let textid = document.createTextNode(curso.id);
+                tdid.appendChild(textid);
+                tr.appendChild(tdid);
+
+                //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
+                let tdnome = document.createElement("td");
+                let textnome = document.createTextNode(curso.nome);
+                tdnome.appendChild(textnome);
+                tr.appendChild(tdnome);
+
+                //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
+                let tdsemestres = document.createElement("td");
+                let textsemestres = document.createTextNode(curso.semestres);
+                tdsemestres.appendChild(textsemestres);
+                tr.appendChild(tdsemestres);
+                
+                //-----------------------------------------------
+                //cria uma célula para o id, dentro dela um nó de texto, e dentro do nó um valor - adiciona célula na linha
+
+                let tdcoord = document.createElement("td");
+
+                let linkcoord = document.createElement("a");
+
+                let textcoord = document.createTextNode(curso.coordenador.nome);
+
+                //tdcoord.appendChild(textcoord);
+                
+                tr.appendChild(tdcoord);
+                linkcoord.appendChild(textcoord);
+                linkcoord.setAttribute("href", "#");
+                linkcoord.setAttribute("onclick", "linkProfessor(this)");
+                linkcoord.setAttribute("data-coord", curso.coordenador.id);
+                tdcoord.appendChild(linkcoord);
+                tr.appendChild(tdcoord);
+
+                //-----------------------------------------------
+
+                //adiciona a linha na tabela
+                tabelaCursos.appendChild(tr);
+
+               
+
+
             })
         
     })
