@@ -1,6 +1,7 @@
 <?php
   include('cabecalho.html');
   include('dados.php');
+  
 ?>
   <main class="container">
       <h2>Lista dos Cursos</h2>
