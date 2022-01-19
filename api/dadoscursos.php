@@ -6,7 +6,7 @@
 //caso o Query String traga um parâmetro id
 if(isset($_GET['id'])){
     //busca o Array com os dados de um curso específico, e codifica em JSON e escreve
-    echo json_encode(getCurso($_GET['id']));
+    echo json_encode(getCursoPorId($_GET['id']));
 }else{ // caso não traga id
     //busca o Array com os dados de todos os cursos, e codifica em JSON e escreve
     echo json_encode(getCursos());

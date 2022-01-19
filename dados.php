@@ -239,11 +239,14 @@ function getCursoPorId($id_curso){
 
     foreach($cursos as $curso){ //para cada 
         if($curso['id'] == $id_curso){
-            //substitui o id pelo array do professor retornado
             $curso['coordenador'] = getProfessor($curso['coordenador']);
             $cursoRetorno = $curso;
+        
+        
         }
     }
+        
+    
     //retorna o array de curso 
     return $cursoRetorno;
 }
